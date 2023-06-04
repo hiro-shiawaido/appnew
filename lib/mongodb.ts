@@ -1,9 +1,9 @@
 import { MongoClient, Db } from "mongodb";
 
 const uri: string | undefined = process.env.NEXT_ATLAS_URI;
-const options = {
-    useUnifiedTopology: true,
+const options: MongoClientOptions = {
     useNewUrlParser: true,
+    useUnifiedTopology: true,
 };
 
 let mongoClient: MongoClient | null = null;

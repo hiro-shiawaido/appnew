@@ -1,5 +1,4 @@
-import connectToDatabase from "../../lib/mongodb";
-
+const { connectToDatabase } = require('../../lib/mongodb');
 export default async function handler(request, response) {
     
     const { database } = await connectToDatabase();

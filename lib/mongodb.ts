@@ -30,7 +30,7 @@ export async function connectToDatabase(): Promise<{ mongoClient: MongoClient; d
             mongoClient = await new MongoClient(uri!).connect();
         }
         console.log("Connected to server localhost:3000");
-        database = await mongoClient.db(process.env.NEXT_ATLAS_DATABASE);
+        database = mongoClient.db("sample_restaurants");
         return { mongoClient, database};
     } catch (e: unknown) {
         console.error(e);

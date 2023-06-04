@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import Head from 'next/head'
-import clientPromise from '../lib/mongodb'
+import clientPromise from 'mongodb'
 import type { InferGetServerSidePropsType, GetServerSideProps } from 'next'
 
 type ConnectionStatus = {

@@ -35,7 +35,8 @@ export const getServerSideProps: GetServerSideProps<
 export default function Home({
   isConnected,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-  const [restaurants, setRestaurants] = useState([])
+
+  const [restaurants, setRestaurants] = useState<{ name: string; restaurant_id: string }[]>([]);
   useEffect(() => {
     (async () => {
       const results = await fetch ("/api/list");

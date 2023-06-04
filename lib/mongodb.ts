@@ -1,10 +1,6 @@
 import { MongoClient, Db } from "mongodb";
 
 const uri: string | undefined = process.env.NEXT_ATLAS_URI;
-const options: MongoClientOptions = {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-};
 
 let mongoClient: MongoClient | null = null;
 let database: Db | null = null;
@@ -25,13 +21,13 @@ export async function connectToDatabase(): Promise<{ mongoClient: MongoClient; d
         }
         if (process.env.VERCEL_ENV === "development") {
             if (!global._mongoClient) {
-                mongoClient = await new MongoClient(uri!, options).connect();
+                mongoClient = await new MongoClient(uri!).connect();
                 global._mongoClient = mongoClient;
             } else {
                 mongoClient = global._mongoClient;
             }
         } else {
-            mongoClient = await new MongoClient(uri!, options).connect();
+            mongoClient = await new MongoClient(uri!).connect();
         }
         console.log("Connected to server localhost:3000");
         database = await mongoClient.db(process.env.NEXT_ATLAS_DATABASE!);

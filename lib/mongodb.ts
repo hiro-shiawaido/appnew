@@ -1,4 +1,4 @@
-import { MongoClient } from "mongodb";
+import { Db, MongoClient } from "mongodb";
 
 const uri = process.env.NEXT_ATLAS_URI;
 const options = {
@@ -6,8 +6,8 @@ const options = {
     useNewUrlParser: true,
 };
 
-let mongoClient = null;
-let database = null;
+let mongoClient: MongoClient | null = null;
+let database: Db | null = null;
 
 if (!process.env.NEXT_ATLAS_URI) {
     throw new Error('Please add your Mongo URI to .env.local')
